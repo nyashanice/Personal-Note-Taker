@@ -28,8 +28,47 @@ app.get("/api/notes", (req, res) => {
 });
 
 // POST /api/notes to db.json
-// receive new note and append to db.json then return new note
-// each note should have unique id when saved (use npm package)
+app.post("/api/notes", (req, res) => {
+  // receive new note and append to db.json then return new note
+  const { title, text } = req.body;
+  console.log(req.body);
+
+  if (title && text) {
+    // each note should have unique id when saved (use npm package)
+    const newNote = {
+      title,
+      text,
+      _id: uuid(),
+    };
+
+    // const stringifyNote = JSON.stringify(newNote);
+
+    fs.readFile("./db/db.json", "utf8", (err, notes) => {
+      if (err) {
+        console.error(err);
+      } else {
+        const parseNotes = JSON.parse(notes);
+        parseNotes.push(newNote);
+
+        fs.writeFile("./db/db.json", JSON.stringify(parseNotes), (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("success!");
+          }
+        });
+      }
+    });
+
+    const response = {
+      status: "success",
+      body: newNote,
+    };
+
+    console.log(response);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);
 });
