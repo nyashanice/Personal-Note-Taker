@@ -10,6 +10,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.listen(PORT, () => {
+  console.log(`Listening at http://localhost:${PORT}`);
+});
+
 app.use(express.static("public"));
 // GET /notes route to notes.html
 app.get("/notes", (req, res) => {
@@ -17,13 +21,24 @@ app.get("/notes", (req, res) => {
 });
 
 // GET * to index.html
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 // GET /api/notes to db.json
 app.get("/api/notes", (req, res) => {
-  res.json(`${req.method} request received!`);
+  console.log("hello");
+  fs.readFile("./db/db.json", "utf8", (err, results) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(JSON.parse(results));
+      console.log("here");
+    }
+    // console.log(results);
+  });
+  // console.log(userNotes);
+
   console.info(`${req.method} request received!!`);
 });
 
@@ -40,24 +55,30 @@ app.post("/api/notes", (req, res) => {
       text,
       _id: uuid(),
     };
-
+    // appendNotes(newNote, "./public/notes.html");
     // const stringifyNote = JSON.stringify(newNote);
 
-    fs.readFile("./db/db.json", "utf8", (err, notes) => {
+    fs.readFileSync("./db/db.json", "utf8", (err, notes) => {
       if (err) {
         console.error(err);
       } else {
         const parseNotes = JSON.parse(notes);
         parseNotes.push(newNote);
+        return parseNotes;
+      }
 
-        fs.writeFile("./db/db.json", JSON.stringify(parseNotes), (err) => {
+      fs.writeFile(
+        "./db/db.json",
+        JSON.stringify(parseNotes, null, 4),
+        (err) => {
           if (err) {
             console.log(err);
           } else {
             console.log("success!");
+            res.json(parseNotes);
           }
-        });
-      }
+        }
+      );
     });
 
     const response = {
@@ -69,6 +90,27 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening at http://localhost:${PORT}`);
-});
+// const appendNotes = (note, file) => {
+//   console.log(note);
+//   console.log(JSON.stringify(note));
+//   console.log(note.title);
+//   console.log(note.text);
+
+//   let list = document.getElementsByClassName("list-group");
+//   console.log(list);
+//   fs.readFile("./db/db.json", "utf8", (err, notes) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//   const allNotes = JSON.stringify(notes);
+//   console.log(allNotes);
+//   allNotes.push(note);
+//   console.log(allNotes);
+// }
+//   });
+// };
+
+//  var pastSearch = document.createElement("li");
+//  pastSearch.classList.add("list-group-item");
+//  pastSearch.appendChild(document.createTextNode(searchItems[i]));
+//  list.appendChild(pastSearch);
