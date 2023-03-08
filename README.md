@@ -6,12 +6,10 @@ The personal Note Taker app is a handy application that allows users to keep tra
 
 While building this application, I learned how to use and implement Express.
 
-
-
 ## Usage
 
 ![alt text](assets/images/screenshot.png)
 
 To use the application, you can type in a note title and any supporting text on the screen and click on the save button in the top right corner. This will then populate your note on the left hand side of the screen in a column.
 
-Check it out <a href="">here</a>!
+Check it out <a href="https://personal-note-taker.herokuapp.com/">here</a>!
