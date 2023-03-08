@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const uuid = require("./helpers/uuid");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -67,7 +67,6 @@ app.post("/api/notes", (req, res) => {
         sendToDb("./db/db.json", parseNotes);
         return parseNotes;
       }
-      
     });
     const response = {
       status: "success",
