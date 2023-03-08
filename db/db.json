@@ -1,92 +1,12 @@
 [
-  {
-    "title": "do hw",
-    "text": "just do it",
-    "_id": "02d7"
-  },
-  {
-    "title": "do hw",
-    "text": "just do it",
-    "_id": "6582"
-  },
-  {
-    "title": "laundry",
-    "text": "wash",
-    "_id": "a171"
-  },
-  {
-    "title": "clean room",
-    "text": "spring clean",
-    "_id": "f548"
-  },
-  {
-    "title": "wash car",
-    "text": "vroom vroom",
-    "_id": "6575"
-  },
-  {
-    "title": "hw",
-    "text": "blah",
-    "_id": "3b7c"
-  },
-  {
-    "title": "laundry",
-    "text": "sunday",
-    "_id": "97a8"
-  },
-  {
-    "title": "laundry",
-    "text": "sunday",
-    "_id": "9355"
-  },
-  {
-    "title": "laundry",
-    "text": "sunday",
-    "_id": "c97a"
-  },
-  {
-    "title": "laundry",
-    "text": "sunday",
-    "_id": "45b2"
-  },
-  {
-    "title": "laundry",
-    "text": "sunday",
-    "_id": "4948"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "e3c3"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "317a"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "6ca4"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "d01a"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "9d50"
-  },
-  {
-    "title": "hw",
-    "text": "today",
-    "_id": "3610"
-  },
-  {
-    "title": "clean",
-    "text": "spring cleaning",
-    "_id": "dc48"
-  }
+    {
+        "title": "do hw",
+        "text": "just do it",
+        "_id": "02d7"
+    },
+    {
+        "title": "do laundry",
+        "text": "wash, dry, fold",
+        "_id": "d3d3"
+    }
 ]
